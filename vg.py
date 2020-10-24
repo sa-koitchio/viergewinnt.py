@@ -57,7 +57,8 @@ def check(player1Turn,w,h,f):
                 _streakVertical = 0
         #if _streakVertical >= 4, 4 in a row = win
         if(_streakVertical >= 4):
-            print("Player "+str(int(player1Turn))+" you're winner")
+            printField(width,height)
+            print("Player "+str(int(player1Turn))+" you're winner!")
             # Wipe the board and restart game
             wipe()
     #Check Hor
@@ -66,17 +67,20 @@ def check(player1Turn,w,h,f):
 
     for _y in range(h):
         for _x in range(w):
+            #The currently indexed field is from current Player
             if(f[_x][_y] == int(player1Turn)):
-
                 _streakHorizontal += 1
 
             else:
                 _streakHorizontal = 0
-        #if _streakVertical >= 4, 4 in a row = win
-        if(_streakHorizontal >= 4):
-            print("Player "+str(int(player1Turn))+" you're winner")
-            # Wipe the board and restart game
-            wipe()
+
+            # The winner is obvious! Print the field and then reset!
+            if(_streakHorizontal >= 4):
+                printField(width,height)
+                print("Player "+str(int(player1Turn))+" you're winner!")
+                wipe()
+
+
 
 
 def printField(w,h):
